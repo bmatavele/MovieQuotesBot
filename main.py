@@ -1,5 +1,7 @@
-from telegram.ext import Updater, CommandHandler
+from uuid import uuid4
+from telegram.ext import Updater, InlineQueryHandler, CommandHandler
 from telegram.ext import MessageHandler, Filters
+from telegram import InlineQueryResultPhoto, InputTextMessageContent
 import logging
 
 # Enable logging
@@ -74,6 +76,17 @@ def anger(bot, update):
 def frustration(bot, update):
     bot.sendPhoto(update.message.chat_id, photo='http://67.media.tumblr.com/tumblr_kxp4djSiDE1qa0ideo1_500.jpg')
 
+def inlinequery(bot, update):
+    print("in inline query")
+    query = update.inline_query.query
+    results = list()
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="ghost world",
+                                            photo_url="http://www.radioteos.ru/kadr/wp-content/uploads/2013/11/ghost-world.jpg",
+                                            thumb_url="http://www.radioteos.ru/kadr/wp-content/uploads/2013/11/ghost-world.jpg",
+                                            ))
 
 # Helpers
 
