@@ -7,3 +7,5 @@
 Flask==0.10
 requests==2.10.0
 gunicorn>=19.6.0
+
+python-telegram-bot==5.0.0 
