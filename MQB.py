@@ -38,6 +38,9 @@ def silence(bot, update):
 def idontcare(bot, update):
     bot.sendPhoto(update.message.chat_id, photo='http://67.media.tumblr.com/4174671f266454da747190b386a265f6/tumblr_ockh8oJJaC1vewk1qo1_1280.jpg')
 
+def positivity(bot, update):
+    bot.sendPhoto(update.message.chat_id, photo='http://67.media.tumblr.com/6d14fd033a995acfbb912dcfa43d8992/tumblr_nks8znTM1U1rx3q30o1_500.gif')
+
 
 
 
@@ -61,5 +64,6 @@ dispatcher.add_handler(caps_handler)
 dispatcher.add_handler(CommandHandler('icebreaker', icebreaker))
 dispatcher.add_handler(CommandHandler('idontcare', idontcare))
 dispatcher.add_handler(CommandHandler('silence', silence))
+dispatcher.add_handler(CommandHandler('positivity', silence))
 
 updater.start_polling()
