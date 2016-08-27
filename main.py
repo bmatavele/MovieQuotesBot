@@ -151,7 +151,7 @@ def inlinequery(bot, update):
 echo_handler = MessageHandler([Filters.text], echo)
 caps_handler = CommandHandler('caps', caps, pass_args=True)
 
-updater = Updater('221355228:AAEaNilNWb1_P32QSEXhovNVJTzO8aZX-4g')
+updater = Updater('221355228:AAHC0_Hm7PRcZFsau2pDz1t13FUSoosOixA')
 
 
 # For quicker access to the Dispatcher used by your Updater
