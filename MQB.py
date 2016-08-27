@@ -1,5 +1,7 @@
-from telegram.ext import Updater, CommandHandler
+from uuid import uuid4
+from telegram.ext import Updater, InlineQueryHandler, CommandHandler
 from telegram.ext import MessageHandler, Filters
+from telegram import InlineQueryResultPhoto, InputTextMessageContent
 import logging
 
 # Enable logging
@@ -74,6 +76,75 @@ def anger(bot, update):
 def frustration(bot, update):
     bot.sendPhoto(update.message.chat_id, photo='http://67.media.tumblr.com/tumblr_kxp4djSiDE1qa0ideo1_500.jpg')
 
+def inlinequery(bot, update):
+    print("in inline query")
+    query = update.inline_query.query
+    results = list()
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="ghost world",
+                                            photo_url="http://www.radioteos.ru/kadr/wp-content/uploads/2013/11/ghost-world.jpg",
+                                            thumb_url="http://www.radioteos.ru/kadr/wp-content/uploads/2013/11/ghost-world.jpg",
+                                            ))
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="silence",
+                                            photo_url="http://67.media.tumblr.com/05ab4de70d2195e3ba0b2338eca31005/tumblr_o0on44BT1l1uhipc8o1_1280.jpg",
+                                            thumb_url="http://67.media.tumblr.com/05ab4de70d2195e3ba0b2338eca31005/tumblr_o0on44BT1l1uhipc8o1_1280.jpg",
+                                            ))
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="idontcare",
+                                            photo_url="http://67.media.tumblr.com/4174671f266454da747190b386a265f6/tumblr_ockh8oJJaC1vewk1qo1_1280.jpg",
+                                            thumb_url="http://67.media.tumblr.com/4174671f266454da747190b386a265f6/tumblr_ockh8oJJaC1vewk1qo1_1280.jpg",
+                                            ))
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="comfort",
+                                            photo_url="http://65.media.tumblr.com/tumblr_lya3m9SGHB1qzdstpo1_500.jpg",
+                                            thumb_url="http://65.media.tumblr.com/tumblr_lya3m9SGHB1qzdstpo1_500.jpg",
+                                            ))
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="lonely",
+                                            photo_url="http://65.media.tumblr.com/tumblr_lya4mtvSd41qzdstpo1_500.jpg",
+                                            thumb_url="http://65.media.tumblr.com/tumblr_lya4mtvSd41qzdstpo1_500.jpg",
+                                            ))
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="alcohol",
+                                            photo_url="http://67.media.tumblr.com/tumblr_lb5pm0pepw1qao8ddo1_500.jpg",
+                                            thumb_url="http://67.media.tumblr.com/tumblr_lb5pm0pepw1qao8ddo1_500.jpg",
+                                            ))
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="lazy",
+                                            photo_url="http://67.media.tumblr.com/tumblr_lbzk5pbQso1qzdstpo1_500.jpg",
+                                            thumb_url="http://67.media.tumblr.com/tumblr_lbzk5pbQso1qzdstpo1_500.jpg",
+                                            ))
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="agree",
+                                            photo_url="http://67.media.tumblr.com/tumblr_l3pbo60QXN1qzdstpo1_500.jpg",
+                                            thumb_url="http://67.media.tumblr.com/tumblr_l3pbo60QXN1qzdstpo1_500.jpg",
+                                            ))
+
+    results.append(InlineQueryResultPhoto(id=uuid4(),
+                                            type="photo",
+                                            title="frustration",
+                                            photo_url="http://67.media.tumblr.com/tumblr_kxp4djSiDE1qa0ideo1_500.jpg",
+                                            thumb_url="http://67.media.tumblr.com/tumblr_kxp4djSiDE1qa0ideo1_500.jpg",
+                                            ))
+
+    bot.answerInlineQuery(update.inline_query.id, results=results)
+
 
 # Helpers
 
@@ -106,7 +177,11 @@ dispatcher.add_handler(CommandHandler('comfort', comfort))
 dispatcher.add_handler(CommandHandler('agree', agree))
 dispatcher.add_handler(CommandHandler('angry', angry))
 dispatcher.add_handler(CommandHandler('anger', anger))
-dispatcher.add_handler(CommandHandler('frustration', frustration)
+dispatcher.add_handler(CommandHandler('frustration', frustration))
 
+# on noncommand i.e message - echo the message on Telegram
+dispatcher.add_handler(InlineQueryHandler(inlinequery))
 
 updater.start_polling()
+
+updater.idle()
