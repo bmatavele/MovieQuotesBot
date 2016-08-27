@@ -95,9 +95,7 @@ dispatcher.add_handler(caps_handler)
 dispatcher.add_handler(CommandHandler('icebreaker', icebreaker))
 dispatcher.add_handler(CommandHandler('idontcare', idontcare))
 dispatcher.add_handler(CommandHandler('silence', silence))
-<<<<<<< HEAD
 dispatcher.add_handler(CommandHandler('positivity', silence))
-=======
 dispatcher.add_handler(CommandHandler('sad', sad))
 dispatcher.add_handler(CommandHandler('lonely', lonely))
 dispatcher.add_handler(CommandHandler('lazy', lazy))
@@ -109,6 +107,6 @@ dispatcher.add_handler(CommandHandler('agree', agree))
 dispatcher.add_handler(CommandHandler('angry', angry))
 dispatcher.add_handler(CommandHandler('anger', anger))
 dispatcher.add_handler(CommandHandler('frustration', frustration)
->>>>>>> 6555cabf5d4ef4d6a1275907e282621fb6731246
+
 
 updater.start_polling()
